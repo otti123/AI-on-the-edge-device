@@ -317,21 +317,25 @@ string trim(string istring, string adddelimiter)
 size_t findDelimiterPos(string input, string delimiter)
 {
 	size_t pos = std::string::npos;
-	size_t zw;
+	//size_t zw;
 	string akt_del;
 
 	for (int anz = 0; anz < delimiter.length(); ++anz)
 	{
 		akt_del = delimiter[anz];
-		if ((zw = input.find(akt_del)) != std::string::npos)
+		size_t zw = input.find(akt_del);
+
+		if (zw != std::string::npos)
 		{
 			if (pos != std::string::npos)
 			{
-				if (zw < pos)
+				if (zw < pos) {
 					pos = zw;
+				}
 			}
-			else
+			else {
 				pos = zw;
+			}
 		}
 	}
 	return pos;
